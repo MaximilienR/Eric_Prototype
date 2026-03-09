@@ -32,7 +32,7 @@ export default function Contact() {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData.entries());
 
-    // ✅ Convertir la checkbox en boolean
+    // ✅ Convertir la checkbox en boolean.
     data.acceptTerms = data.acceptTerms === "on";
 
     // ✅ Validation avec Yup
