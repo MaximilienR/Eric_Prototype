@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./layout/Layout.jsx";
-import Home from "./pages/Home/Home.jsx";
+import Home from "./pages/home/home.jsx";
 import About from "./pages/about/about.jsx";
 import Contact from "./pages/contact/contact.jsx";
 import Confidentiel from "./pages/confidentiel/confidentiel.jsx";
