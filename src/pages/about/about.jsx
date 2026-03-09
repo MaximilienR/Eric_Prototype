@@ -4,7 +4,7 @@ import photo from "../../assets/photo.avif";
 export default function About() {
   return (
     <>
-      {/* 🔥 Container avec centrage verticalddd */}
+      {/* 🔥 Container avec centrage verticalf */}
       <div className="min-h-screen flex items-center">
         <div className="max-w-6xl mx-auto px-6 w-full">
           <div className="flex flex-col md:flex-row gap-16 items-center">
