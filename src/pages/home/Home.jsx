@@ -25,7 +25,7 @@ export default function Home() {
        Showreel
         </h2>
 
-        {/* 🔥 Container pour centrer */}
+        {/* 🔥 Container pour centrere */}
         <div className="flex justify-center w-full">
           <video
             className="w-[80%] md:w-[70%] rounded-2xl shadow-2xl"
