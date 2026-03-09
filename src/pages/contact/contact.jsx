@@ -5,7 +5,7 @@ export default function Contact() {
   const [result, setResult] = useState("");
   const [errors, setErrors] = useState({});
 
-  // 🔥 Schéma Yup..
+  // 🔥 Schéma Yup.
   const schema = Yup.object().shape({
     name: Yup.string()
       .min(2, "Le nom doit contenir au moins 2 caractères")
