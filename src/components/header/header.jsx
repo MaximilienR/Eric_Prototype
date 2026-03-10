@@ -1,21 +1,28 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.jpg"
+import logo from "../../assets/logo.jpg";
 import fb from "../../assets/fb.svg";
 import lin from "../../assets/lin.svg";
 import wa from "../../assets/wa.svg";
+import logoDynamik from "../../assets/logoDynamik.mp4"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-<nav className="bg-[#FFDC03]">    
-<div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-2 pt-8">        
+    <nav className="bg-[#FFDC03]">
+      <div className="container mx-auto flex justify-between items-center px-4 py-2">
+        
         {/* Logo */}
-     <Link to="/" className="flex items-center space-x-2 ">
-  <img src={logo} alt="Logo" className="h-10 w-auto bg-yellow-400"  />
-</Link>
-
+   <Link to="/">
+<video
+  src={logoDynamik}
+  autoPlay
+  loop
+  muted
+  className="w-64 h-36 rounded-lg object-contain"
+/>
+    </Link>
         {/* Menu Desktop */}
         <div className="hidden md:flex items-center space-x-6 text-black">
           <Link to="/" className="hover:text-gray-700">

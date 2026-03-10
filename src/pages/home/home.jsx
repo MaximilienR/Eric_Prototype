@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import About from "../about/About";
+import Contact from "../contact/Contact";
+
  export default function Home() {
   return (
     <>
@@ -41,6 +43,7 @@ import About from "../about/About";
       </section>
 
       <About />
+      <Contact />
     </>
   );
   } 
