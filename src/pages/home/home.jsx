@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import About from "../about/About";
+import About from "../about/about";
 import Contact from "../contact/contact";
 
  export default function Home() {
@@ -11,7 +11,7 @@ import Contact from "../contact/contact";
         <h1 className="text-4xl md:text-6xl font-bold mb-6">
           <span className="text-red-500">Hello !</span> Je suis Eric Colin,
           <br />
-          graphiste & motion designer.
+          graphiste & motion designer..
         </h1>
 
         <button className="bg-black text-white px-6 py-3 rounded-lg text-lg hover:bg-gray-800 transition">
