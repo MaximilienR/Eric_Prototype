@@ -27,7 +27,7 @@ import { Link } from "react-router-dom";
         {/* 🔥 Container pour centrere */}
         <div className="flex justify-center w-full">
           <video
-            className="w-[80%] md:w-[70%] rounded-2xl shadow-2xl"
+            className="w-[40%] md:w-[50%] rounded-2xl shadow-2xl"
             autoPlay
             loop
             muted
