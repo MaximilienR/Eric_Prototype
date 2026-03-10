@@ -119,7 +119,8 @@ export default function Contact() {
             name="acceptTerms"
             className="w-4 h-4"
           />
-          <span>J'accepte les termes et conditions</span>
+          <span>
+Je reconnais avoir pris connaissance de la politique de confidentialité et je l'accepte.</span>
         </label>
         {errors.acceptTerms && (
           <p className="text-red-600">{errors.acceptTerms}</p>

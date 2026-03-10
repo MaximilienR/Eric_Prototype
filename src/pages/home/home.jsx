@@ -35,6 +35,8 @@ import Contact from "../contact/contact";
             loop
             muted
             playsInline
+              controls
+
           >
             <source src="/video.mp4" type="video/mp4" />
             Ton navigateur ne supporte pas la vidéo.
