@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Confidentiel() {
   return (
- <div className="min-h-screen bg-yellow-400
+ <div className="min-h-screen  bg-[#FFDC03]
     py-16 px-6">
       <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-2xl p-10">
         

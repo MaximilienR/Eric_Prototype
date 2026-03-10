@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <div className="min-h-screen flex flex-col items-center justify-center bg-yellow-400 text-center px-4">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[#FFDC03] text-center px-4">
         <h1 className="text-4xl md:text-6xl font-bold mb-6">
           <span className="text-red-500">Hello !</span> Je suis Eric Colin,
           <br />
