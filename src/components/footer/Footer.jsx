@@ -4,55 +4,43 @@ import logo from "../../assets/logo_footer.svg";
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white py-16">
-      <div className="max-w-6xl mx-auto px-6">
-        
-        {/* 🔥 Deux colonnes */}
-        <div className="flex flex-col md:flex-row md:justify-between">
-          {/* 🔵 Colonne 1 - Navigation */}
-          <div className="flex flex-col space-y-4 text-lg">
-             <img
-                        src={logo}
-                        alt="Logo"
-  className="w-32 h-32 rounded-full"
-                      />
-          </div>
-          {/* 🔵 Colonne 1 - Navigation */}
+   <div className="flex flex-col items-center md:flex-row md:justify-center md:gap-24 text-center md:text-left bg-black">
 
-            <div className="flex flex-col space-y-4 text-lg">
-            <a href="#" className="hover:text-gray-400 transition">
-              Accueil
-            </a>
+  {/* Logo */}
+  <div className="w-48 flex justify-center md:justify-start">
+    <img
+      src={logo}
+      alt="Logo"
+      className="w-32 h-32 rounded-full"
+    />
+  </div>
 
-               <Link to="/about" className="hover:text-gray-700">
-                        À propos
-                      </Link>
+  {/* Navigation */}
+  <div className="w-48 flex flex-col space-y-4 text-lg">
+    <Link to="/" className="hover:text-gray-400 transition">
+      Accueil
+    </Link>
 
-            <a href="#" className="hover:text-gray-400 transition">
-              Contact
-            </a>
-          </div>
+    <Link to="/about" className="hover:text-gray-400">
+      À propos
+    </Link>
 
-          {/* 🔴 Colonne 2 - Infos */}
-          <div className="flex flex-col space-y-4 text-lg">
-              <Link to="/mention" className="hover:text-gray-700">
-            Mention légale
-          </Link>
+    <Link to="/contact" className="hover:text-gray-400 transition">
+      Contact
+    </Link>
+  </div>
 
-              <Link to="/confidentiel" className="hover:text-gray-700">
-           Politique de confidentialité
-          </Link>
+  {/* Infos */}
+  <div className="w-48 flex flex-col space-y-4 text-lg">
+    <Link to="/mention" className="hover:text-gray-400">
+      Mention légale
+    </Link>
 
-          </div>
+    <Link to="/confidentiel" className="hover:text-gray-400">
+      Politique de confidentialité
+    </Link>
+  </div>
 
-        </div>
-
-        {/* 🔥 Petite signature en bas */}
-        <div className="mt-12 text-center text-gray-500 text-sm">
-          © {new Date().getFullYear()} — Tous droits réservés
-        </div>
-
-      </div>
-    </footer>
+</div>
   );
 }
