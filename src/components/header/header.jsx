@@ -11,10 +11,7 @@ export default function Navbar() {
 
   return (
     <nav className="bg-[#FFDC03]">
-      <div className="container mx-auto flex justify-between items-center px-4 py-2">
-        
-        {/* Logo */}
-   <Link to="/">
+<div className="mx-auto max-w-4xl flex justify-between items-center px-8 py-2">   <Link to="/">
 <video
   src={logoDynamik}
   autoPlay
