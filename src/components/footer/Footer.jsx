@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo_footer.svg";
 
 export default function Footer() {
   return (
@@ -7,10 +8,18 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6">
         
         {/* 🔥 Deux colonnes */}
-        <div className="flex flex-col md:flex-row justify-between gap-16">
-          
+        <div className="flex flex-col md:flex-row md:justify-between">
           {/* 🔵 Colonne 1 - Navigation */}
           <div className="flex flex-col space-y-4 text-lg">
+             <img
+                        src={logo}
+                        alt="Logo"
+  className="w-32 h-32 rounded-full"
+                      />
+          </div>
+          {/* 🔵 Colonne 1 - Navigation */}
+
+            <div className="flex flex-col space-y-4 text-lg">
             <a href="#" className="hover:text-gray-400 transition">
               Accueil
             </a>
