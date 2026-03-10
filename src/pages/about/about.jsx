@@ -51,23 +51,23 @@ export default function About() {
             </div>
 
             {/* 🔴 Colonne droite */}
-            <div className="flex-1 bg-gray-100 p-10 rounded-2xl shadow-lg">
-              <h2 className="text-3xl font-bold mb-6">
-                Services
-              </h2>
+           <div className="flex-1">
+  <h2 className="text-3xl font-bold mb-6">
+    Services
+  </h2>
 
-              <ul className="space-y-3 text-lg">
-                <li>✅ Animation 2D</li>
-                <li>✅ Publicités sur les réseaux sociaux</li>
-                <li>✅ Vidéos institutionnelles</li>
-                <li>✅ Animation typographique</li>
-                <li>✅ Vidéos explicatives</li>
-                <li>✅ Animations de logos</li>
-                <li>✅ Habillage vidéo</li>
-                <li>✅ Affichage numérique extérieur</li>
-                <li>✅ Design graphique & infographie</li>
-              </ul>
-            </div>
+  <ul className="list-disc pl-5 space-y-3 text-lg">
+    <li>Animation 2D</li>
+    <li>Publicités sur les réseaux sociaux</li>
+    <li>Vidéos institutionnelles</li>
+    <li>Animation typographique</li>
+    <li>Vidéos explicatives</li>
+    <li>Animations de logos</li>
+    <li>Habillage vidéo</li>
+    <li>Affichage numérique extérieur</li>
+    <li>Design graphique & infographie</li>
+  </ul>
+</div>
 
           </div>
         </div>
