@@ -9,8 +9,8 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-<nav className="bg-[#FFDC03]">      <div className="container mx-auto flex justify-between items-center px-4 py-2">
-        
+<nav className="bg-[#FFDC03]">    
+<div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-2 pt-8">        
         {/* Logo */}
      <Link to="/" className="flex items-center space-x-2 ">
   <img src={logo} alt="Logo" className="h-10 w-auto bg-yellow-400"  />
@@ -46,7 +46,7 @@ export default function Navbar() {
 
       {/* Menu Mobile */}
       {isOpen && (
-        <div className="md:hidden flex flex-col items-center  bg-[#FFDC03] pb-4 space-y-3 text-black">
+        <div className="md:hidden flex flex-col items-center bg-yellow-400 pb-4 space-y-3 text-black">
           <Link
             to="/"
             className="hover:text-gray-700"
