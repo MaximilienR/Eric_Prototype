@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import About from "../about/About";
  export default function Home() {
   return (
     <>
@@ -38,6 +39,8 @@ import { Link } from "react-router-dom";
           </video>
         </div>
       </section>
+
+      <About />
     </>
   );
   } 
