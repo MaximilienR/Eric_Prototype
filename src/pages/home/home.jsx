@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import About from "../about/About";
-import Contact from "../contact/Contact";
+import Contact from "../contact/contact";
 
  export default function Home() {
   return (
