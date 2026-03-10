@@ -16,7 +16,7 @@ export default function Footer() {
   </div>
 
   {/* Navigation */}
-  <div className="w-48 flex flex-col space-y-4 text-lg">
+  <div className="w-48 flex flex-col space-y-4 text-lg  text-gray-400">
     <Link to="/" className="hover:text-gray-400 transition">
       Accueil
     </Link>
@@ -31,8 +31,8 @@ export default function Footer() {
   </div>
 
   {/* Infos */}
-  <div className="w-48 flex flex-col space-y-4 text-lg">
-    <Link to="/mention" className="hover:text-gray-400">
+  <div className="w-48 flex flex-col space-y-4 text-lg text-gray-400">
+    <Link to="/mention" className="hover:text-gray-400 ">
       Mention légale
     </Link>
 
