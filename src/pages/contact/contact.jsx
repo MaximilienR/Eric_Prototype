@@ -85,7 +85,7 @@ export default function Contact() {
         <h1 className="text-4xl font-bold text-center text-black">
           Contactez-moi
         </h1>
-
+        <p className="text-center">Un projet, une question ? Parlons en ensemble !</p>
         <input
           type="text"
           name="name"
