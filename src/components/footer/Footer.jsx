@@ -39,9 +39,14 @@ export default function Footer() {
 
         {/* Infos légales */}
         <div className="flex flex-col items-start space-y-4 text-lg">
-          <Link to="/mention" className="hover:text-gray-200 transition">Mention légale</Link>
+        
+          <Link to="/mention" 
+           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="hover:text-gray-200 transition">Mention légale</Link>
           <Link
             to="/confidentiel"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+
             className="hover:text-gray-200 transition whitespace-nowrap"
           >
             Politique de confidentialité
