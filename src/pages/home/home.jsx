@@ -29,17 +29,17 @@ export default function Home() {
         </h2>
 
         <div className="flex justify-center w-full">
-          <video
-            className="w-[40%] md:w-[50%] rounded-2xl shadow-2xl"
-            autoPlay
-            loop
-            muted
-            playsInline
-            controls
-          >
-            <source src="/video.mp4" type="video/mp4" />
-          </video>
-        </div>
+  <video
+    className="w-full md:w-[50%] rounded-2xl shadow-2xl"
+    autoPlay
+    loop
+    muted
+    playsInline
+    controls
+  >
+    <source src="/video.mp4" type="video/mp4" />
+  </video>
+</div>
       </section>
 
       <div id="about">
