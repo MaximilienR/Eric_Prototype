@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo_footer.svg";
-
+import fw from "../../assets/fw.png";
+import linkedin from "../../assets/linkedin.png";
+import whatsapp from "../../assets/whatsapp.png";
 export default function Footer() {
   return (
     <footer className="bg-black text-gray-400">
@@ -35,6 +37,34 @@ export default function Footer() {
             Politique de confidentialité
           </Link>
         </div>
+
+     <div className="flex flex-col items-start space-y-4 text-lg">
+ 
+  <a
+    href="https://facebook.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:opacity-80 transition"
+  >
+<img src={fw} alt="Facebook" className="w-4 h-4 brightness-0 invert" />  </a>
+
+<a
+    href="https://facebook.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:opacity-80 transition"
+  >
+<img src={linkedin} alt="linkedin" className="w-4 h-4 brightness-0 invert" />  </a>
+
+<a
+    href="https://facebook.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:opacity-80 transition"
+  >
+<img src={whatsapp} alt="whatsapp" className="w-4 h-4 brightness-0 invert" />  </a>
+</div>
+
 
       </div>
 
