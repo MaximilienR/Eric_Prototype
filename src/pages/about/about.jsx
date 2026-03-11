@@ -45,7 +45,7 @@ export default function About() {
 
           {/* 🔴 Colonne droite : Services */}
           <div className="flex-1">
-            <h2 className="text-3xl font-bold mb-6">Services</h2>
+            <h2 className="text-4xl font-bold mb-6">Services</h2>
             <ul className="list-disc pl-5 space-y-3 text-lg">
               <li>Animation 2D</li>
               <li>Publicités sur les réseaux sociaux</li>

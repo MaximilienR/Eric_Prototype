@@ -31,7 +31,8 @@ export default function Footer() {
 
         {/* Navigation */}
         <div className="flex flex-col items-start space-y-4 text-lg">
-          <Link to="/" className="hover:text-gray-200 transition">Accueil</Link>
+          <a onClick={scrollToTop}
+ className="hover:text-gray-200 transition">Accueil</a>
           <Link to="/about" className="hover:text-gray-200 transition">À propos</Link>
           <Link to="/contact" className="hover:text-gray-200 transition">Contact</Link>
         </div>
