@@ -7,10 +7,22 @@ import logoDynamik from "../../assets/logoDynamik.mp4";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const links = [
+    { name: "Accueil", href: "#accueil" },
+    { name: "À propos", href: "#about" },
+    { name: "Contact", href: "#contact" },
+  ];
+
+  const socials = [
+    { icon: fb, alt: "Facebook" },
+    { icon: lin, alt: "Linkedin" },
+    { icon: wa, alt: "Whatsapp" },
+  ];
+
   return (
     <nav className="bg-[#FFDC03]">
       <div className="mx-auto max-w-4xl flex justify-between items-center px-8 py-2">
-        
+
         <a href="#accueil">
           <video
             src={logoDynamik}
@@ -23,24 +35,23 @@ export default function Navbar() {
 
         {/* Menu Desktop */}
         <div className="hidden md:flex items-center space-x-6 text-black">
-          <a href="#accueil" className="hover:text-gray-700">
-            Accueil
-          </a>
+          {links.map((link) => (
+            <a key={link.href} href={link.href} className="hover:text-gray-700">
+              {link.name}
+            </a>
+          ))}
 
-          <a href="#about" className="hover:text-gray-700">
-            À propos
-          </a>
-
-          <a href="#contact" className="hover:text-gray-700">
-            Contact
-          </a>
-
-          <img src={fb} alt="Facebook" className="w-8 h-8" />
-          <img src={lin} alt="Linkedin" className="w-8 h-8" />
-          <img src={wa} alt="Whatsapp" className="w-8 h-8" />
+          {socials.map((social, index) => (
+            <img
+              key={index}
+              src={social.icon}
+              alt={social.alt}
+              className="w-8 h-8"
+            />
+          ))}
         </div>
 
-        {/* Bouton Burger */}
+        {/* Burger */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden text-black text-3xl"
@@ -51,36 +62,28 @@ export default function Navbar() {
 
       {/* Menu Mobile */}
       {isOpen && (
-        <div className="md:hidden flex flex-col items-center bg-yellow-400 pb-4 space-y-3 text-black">
-          
-          <a
-            href="#accueil"
-            className="hover:text-gray-700"
-            onClick={() => setIsOpen(false)}
-          >
-            Accueil
-          </a>
+        <div className="md:hidden flex flex-col items-start space-y-4 px-8 pb-6 bg-[#FFDC03]">
 
-          <a
-            href="#about"
-            className="hover:text-gray-700"
-            onClick={() => setIsOpen(false)}
-          >
-            À propos
-          </a>
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="hover:text-gray-700"
+              onClick={() => setIsOpen(false)}
+            >
+              {link.name}
+            </a>
+          ))}
 
-          <a
-            href="#contact"
-            className="hover:text-gray-700"
-            onClick={() => setIsOpen(false)}
-          >
-            Contact
-          </a>
-
-          <div className="flex space-x-4 pt-2">
-            <img src={fb} alt="Facebook" className="w-8 h-8" />
-            <img src={lin} alt="Linkedin" className="w-8 h-8" />
-            <img src={wa} alt="Whatsapp" className="w-8 h-8" />
+          <div className="flex flex-col items-start space-y-2 pt-2">
+            {socials.map((social, index) => (
+              <img
+                key={index}
+                src={social.icon}
+                alt={social.alt}
+                className="w-8 h-8"
+              />
+            ))}
           </div>
 
         </div>
