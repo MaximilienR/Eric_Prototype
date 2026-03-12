@@ -7,12 +7,24 @@ export async function handler(event) {
 
   try {
     const formData = JSON.parse(event.body);
-    const access_key = process.env.VITE_WEB3FORMS_KEY;
+    const access_key = process.env.WEB3FORMS_KEY;
 
+    if (!access_key) {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ success: false, error: "Missing WEB3FORMS_KEY" }),
+      };
+    }
+
+    // Transforme la checkbox privacy en string pour Web3Forms
     const payload = new URLSearchParams({
       ...formData,
+      privacy: formData.privacy ? "true" : "false",
       access_key,
     });
+
+    console.log("FormData reçu:", formData);
+    console.log("Payload envoyé:", payload.toString());
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -26,9 +38,10 @@ export async function handler(event) {
       body: JSON.stringify(result),
     };
   } catch (error) {
+    console.error("Erreur submitForm:", error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ success: false, error }),
+      body: JSON.stringify({ success: false, error: error.message }),
     };
   }
 }

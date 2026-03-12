@@ -27,8 +27,7 @@ export default function Contact() {
 
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData.entries());
-    // Transforme la checkbox en boolean
-    data.privacy = data.privacy === "on";
+    data.privacy = data.privacy === "on"; // Transforme la checkbox en boolean
 
     try {
       await schema.validate(data, { abortEarly: false });
@@ -60,7 +59,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-yellow-400 min-h-screen flex items-center justify-center p-6 bg-[#FFDC03]">
+    <div className="bg-yellow-400 min-h-screen flex items-center justify-center p-6">
       <form onSubmit={onSubmit} className="w-full max-w-2xl flex flex-col gap-6">
         <h1 className="text-4xl font-bold text-center text-black">Contactez-moi</h1>
 
@@ -78,7 +77,6 @@ export default function Contact() {
         />
         {errors.message && <p className="text-red-600">{errors.message}</p>}
 
-        {/* Checkbox de confidentialité */}
         <label className="flex items-center gap-2 text-black">
           <input type="checkbox" name="privacy" className="w-5 h-5" />
           Je reconnais avoir pris connaissance de la politique de confidentialité et je l'accepte
