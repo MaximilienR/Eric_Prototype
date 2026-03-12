@@ -31,7 +31,7 @@ export default function Contact() {
     try {
       const payload = {
         ...values,
-        access_key: "268424bb-d427-4207-acdd-229341faff08", // clé publique Web3Forms
+        access_key: "268424bb-d427-4207-acdd-229341faff08",  
       };
 
       const response = await fetch("https://api.web3forms.com/submit", {

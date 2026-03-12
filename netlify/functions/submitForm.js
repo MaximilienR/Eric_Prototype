@@ -38,7 +38,7 @@ export async function handler(event) {
 
     let result;
     if (contentType && contentType.includes("application/json")) {
-      // Si le serveur renvoie du JSON
+      // Si le serveur renvoie du JSON.
       result = await response.json();
     } else {
       // Si le serveur renvoie du HTML ou autre, ne pas planter
