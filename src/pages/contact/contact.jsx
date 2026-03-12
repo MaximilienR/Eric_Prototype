@@ -69,7 +69,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-yellow-400 min-h-screen flex items-center justify-center p-6">
+    <div className="bg-yellow-400 min-h-screen flex items-center justify-center p-6 bg-[#FFDC03]">
       <form
         onSubmit={onSubmit}
         className="w-full max-w-2xl flex flex-col gap-6"

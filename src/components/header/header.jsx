@@ -14,15 +14,16 @@ export default function Navbar() {
   ];
 
   const socials = [
-    { icon: fb, alt: "Facebook" },
-    { icon: lin, alt: "Linkedin" },
-    { icon: wa, alt: "Whatsapp" },
+    { icon: fb, alt: "Facebook", href: "https://www.facebook.com/eric.colin.motion.design" },
+    { icon: lin, alt: "Linkedin", href: "https://www.linkedin.com/in/eric-colin-graphics/" },
+    { icon: wa, alt: "Whatsapp", href: "https://www.whatsapp.com" },
   ];
 
   return (
     <nav className="bg-[#FFDC03]">
       <div className="mx-auto max-w-4xl flex justify-between items-center px-8 py-2">
 
+        {/* Logo */}
         <a href="#accueil">
           <video
             src={logoDynamik}
@@ -42,12 +43,18 @@ export default function Navbar() {
           ))}
 
           {socials.map((social, index) => (
-            <img
+            <a
               key={index}
-              src={social.icon}
-              alt={social.alt}
-              className="w-8 h-8"
-            />
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={social.icon}
+                alt={social.alt}
+                className="w-8 h-8"
+              />
+            </a>
           ))}
         </div>
 
@@ -77,12 +84,18 @@ export default function Navbar() {
 
           <div className="flex flex-col items-start space-y-2 pt-2">
             {socials.map((social, index) => (
-              <img
+              <a
                 key={index}
-                src={social.icon}
-                alt={social.alt}
-                className="w-8 h-8"
-              />
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={social.icon}
+                  alt={social.alt}
+                  className="w-8 h-8"
+                />
+              </a>
             ))}
           </div>
 
