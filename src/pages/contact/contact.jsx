@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 export default function Contact() {
-  const [result, setResult] = useState("");
-  const [errors, setErrors] = useState({});
+  const initialValues = {
+    name: "",
+    email: "",
+    message: "",
+    privacy: false,
+  };
 
-  const schema = Yup.object().shape({
+  const validationSchema = Yup.object().shape({
     name: Yup.string()
       .min(2, "Le nom doit contenir au moins 2 caractères")
       .required("Le nom est obligatoire"),
@@ -20,75 +25,94 @@ export default function Contact() {
       .required("Vous devez accepter la politique de confidentialité"),
   });
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    setResult("Envoi en cours...");
-    setErrors({});
-
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData.entries());
-    data.privacy = data.privacy === "on"; // Transforme la checkbox en boolean
+  const handleSubmit = async (values, { setSubmitting, resetForm, setStatus }) => {
+    setStatus({ result: "Envoi en cours..." });
 
     try {
-      await schema.validate(data, { abortEarly: false });
+      const payload = {
+        ...values,
+        access_key: "268424bb-d427-4207-acdd-229341faff08", // clé publique Web3Forms
+      };
 
-      const response = await fetch("/.netlify/functions/submitForm", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
       });
 
       const res = await response.json();
 
       if (res.success) {
-        setResult("✅ Message envoyé avec succès !");
-        event.target.reset();
+        setStatus({ result: "✅ Message envoyé avec succès !" });
+        resetForm();
       } else {
-        setResult("❌ Erreur lors de l'envoi");
+        setStatus({ result: "❌ Erreur lors de l'envoi" });
       }
-    } catch (validationError) {
-      if (validationError.inner) {
-        const newErrors = {};
-        validationError.inner.forEach((err) => {
-          newErrors[err.path] = err.message;
-        });
-        setErrors(newErrors);
-      }
-      setResult("❌ Erreur de validation");
+    } catch (err) {
+      console.error(err);
+      setStatus({ result: "❌ Erreur réseau, veuillez réessayer" });
     }
+
+    setSubmitting(false);
   };
 
   return (
     <div className="bg-yellow-400 min-h-screen flex items-center justify-center p-6">
-      <form onSubmit={onSubmit} className="w-full max-w-2xl flex flex-col gap-6">
-        <h1 className="text-4xl font-bold text-center text-black">Contactez-moi</h1>
+      <div className="w-full max-w-2xl">
+        <h1 className="text-4xl font-bold text-center text-black mb-6">Contactez-moi</h1>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          {({ isSubmitting, status }) => (
+            <Form className="flex flex-col gap-6">
+              <Field
+                type="text"
+                name="name"
+                placeholder="Votre nom"
+                className="bg-white p-4 rounded-xl"
+              />
+              <ErrorMessage name="name" component="p" className="text-red-600" />
 
-        <input type="text" name="name" placeholder="Votre nom" className="bg-white p-4 rounded-xl" />
-        {errors.name && <p className="text-red-600">{errors.name}</p>}
+              <Field
+                type="email"
+                name="email"
+                placeholder="Votre email"
+                className="bg-white p-4 rounded-xl"
+              />
+              <ErrorMessage name="email" component="p" className="text-red-600" />
 
-        <input type="email" name="email" placeholder="Votre email" className="bg-white p-4 rounded-xl" />
-        {errors.email && <p className="text-red-600">{errors.email}</p>}
+              <Field
+                as="textarea"
+                name="message"
+                rows="6"
+                placeholder="Votre message"
+                className="bg-white p-4 rounded-xl resize-none"
+              />
+              <ErrorMessage name="message" component="p" className="text-red-600" />
 
-        <textarea
-          name="message"
-          rows="6"
-          placeholder="Votre message"
-          className="bg-white p-4 rounded-xl resize-none"
-        />
-        {errors.message && <p className="text-red-600">{errors.message}</p>}
+              <label className="flex items-center gap-2 text-black">
+                <Field type="checkbox" name="privacy" className="w-5 h-5" />
+                Je reconnais avoir pris connaissance de la politique de confidentialité et je l'accepte
+              </label>
+              <ErrorMessage name="privacy" component="p" className="text-red-600" />
 
-        <label className="flex items-center gap-2 text-black">
-          <input type="checkbox" name="privacy" className="w-5 h-5" />
-          Je reconnais avoir pris connaissance de la politique de confidentialité et je l'accepte
-        </label>
-        {errors.privacy && <p className="text-red-600">{errors.privacy}</p>}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="bg-black text-white p-4 rounded-xl hover:bg-gray-800"
+              >
+                Envoyer
+              </button>
 
-        <button type="submit" className="bg-black text-white p-4 rounded-xl hover:bg-gray-800">
-          Envoyer
-        </button>
-
-        <span className="text-center font-semibold">{result}</span>
-      </form>
+              {status && status.result && (
+                <span className="text-center font-semibold">{status.result}</span>
+              )}
+            </Form>
+          )}
+        </Formik>
+      </div>
     </div>
   );
 }
