@@ -14,20 +14,24 @@ export async function handler(event) {
       };
     }
 
-    // Transforme la checkbox privacy en string pour Web3Forms
-    const payload = new URLSearchParams({
-      ...formData,
-      privacy: formData.privacy ? "true" : "false",
+    // Payload JSON
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+      privacy: formData.privacy ? true : false,
       access_key,
-    });
+    };
 
     console.log("FormData reçu:", formData);
-    console.log("Payload envoyé:", payload.toString());
+    console.log("Payload envoyé (JSON):", payload);
 
-    // fetch natif Node 18 sur Netlify Functions
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
-      body: payload,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
     });
 
     const result = await response.json();
