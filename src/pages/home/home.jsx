@@ -11,7 +11,7 @@ export default function Home() {
         <h1 className="text-4xl md:text-6xl font-bold mb-6">
           <span className="text-red-500">Hello !</span> Je suis Eric Colin,
           <br />
-          graphiste & motion designer..
+          graphiste & motion designer.
         </h1>
 
         <a
