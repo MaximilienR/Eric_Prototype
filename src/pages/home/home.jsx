@@ -24,7 +24,7 @@ export default function Home() {
 
       {/* SHOWREEL */}
       <section className="min-h-screen w-full bg-black text-center px-4 flex flex-col items-center justify-center">
-        <h2 className="text-2xl font-semibold mb-8 text-white">
+        <h2 className="text-xl font-semibold mb-4 text-white">
           Showreel
         </h2>
 
