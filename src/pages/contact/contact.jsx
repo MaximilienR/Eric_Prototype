@@ -5,7 +5,7 @@ export default function Contact() {
   const [result, setResult] = useState("");
   const [errors, setErrors] = useState({});
 
-  // 🔥 Schéma Yup.
+  // 🔥 Schema Yup
   const schema = Yup.object().shape({
     name: Yup.string()
       .min(2, "Le nom doit contenir au moins 2 caractères")
@@ -18,10 +18,6 @@ export default function Contact() {
     message: Yup.string()
       .min(10, "Le message doit contenir au moins 10 caractères")
       .required("Le message est obligatoire"),
-
-    acceptTerms: Yup.boolean()
-      .oneOf([true], "Vous devez accepter les termes et conditions")
-      .required("Vous devez accepter les termes et conditions"),
   });
 
   const onSubmit = async (event) => {
@@ -30,10 +26,8 @@ export default function Contact() {
     setErrors({});
 
     const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData.entries());
 
-    // ✅ Convertir la checkbox en boolean.
-    data.acceptTerms = data.acceptTerms === "on";
+    const data = Object.fromEntries(formData.entries());
 
     // ✅ Validation avec Yup
     try {
@@ -58,9 +52,7 @@ export default function Contact() {
         setResult("✅ Message envoyé avec succès !");
         event.target.reset();
       } else {
-        setResult(
-          "❌ Message non envoyé ...il s'agit de la version demo, les messages ne sont pas réellement envoyés ici "
-        );
+        setResult("❌ Erreur lors de l'envoi");
       }
     } catch (validationError) {
       // ❌ Gestion erreurs validation
@@ -77,7 +69,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-[#FFDC03] min-h-screen flex items-center justify-center p-6">
+    <div className="bg-yellow-400 min-h-screen flex items-center justify-center p-6">
       <form
         onSubmit={onSubmit}
         className="w-full max-w-2xl flex flex-col gap-6"
@@ -85,7 +77,7 @@ export default function Contact() {
         <h1 className="text-4xl font-bold text-center text-black">
           Contactez-moi
         </h1>
-        <p className="text-center">Un projet, une question ? Parlons en ensemble !</p>
+
         <input
           type="text"
           name="name"
@@ -110,20 +102,6 @@ export default function Contact() {
         />
         {errors.message && (
           <p className="text-red-600">{errors.message}</p>
-        )}
-
-        {/* ✅ Checkbox termes et conditions */}
-        <label className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            name="acceptTerms"
-            className="w-4 h-4"
-          />
-          <span>
-Je reconnais avoir pris connaissance de la politique de confidentialité et je l'accepte.</span>
-        </label>
-        {errors.acceptTerms && (
-          <p className="text-red-600">{errors.acceptTerms}</p>
         )}
 
         <button
