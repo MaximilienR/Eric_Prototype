@@ -5,19 +5,10 @@ export default function Contact() {
   const [result, setResult] = useState("");
   const [errors, setErrors] = useState({});
 
-  // 🔥 Schema Yup
   const schema = Yup.object().shape({
-    name: Yup.string()
-      .min(2, "Le nom doit contenir au moins 2 caractères")
-      .required("Le nom est obligatoire"),
-
-    email: Yup.string()
-      .email("Email invalide")
-      .required("L'email est obligatoire"),
-
-    message: Yup.string()
-      .min(10, "Le message doit contenir au moins 10 caractères")
-      .required("Le message est obligatoire"),
+    name: Yup.string().min(2, "Le nom doit contenir au moins 2 caractères").required("Le nom est obligatoire"),
+    email: Yup.string().email("Email invalide").required("L'email est obligatoire"),
+    message: Yup.string().min(10, "Le message doit contenir au moins 10 caractères").required("Le message est obligatoire"),
   });
 
   const onSubmit = async (event) => {
@@ -26,25 +17,17 @@ export default function Contact() {
     setErrors({});
 
     const formData = new FormData(event.target);
-
     const data = Object.fromEntries(formData.entries());
 
-    // ✅ Validation avec Yup
     try {
       await schema.validate(data, { abortEarly: false });
 
-      formData.append(
-        "access_key",
-        import.meta.env.VITE_WEB3FORMS_KEY
-      );
-
-      const response = await fetch(
-        "https://api.web3forms.com/submit",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      // 🔄 On envoie maintenant vers la fonction Netlify
+      const response = await fetch("/.netlify/functions/submitForm", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
 
       const res = await response.json();
 
@@ -55,7 +38,6 @@ export default function Contact() {
         setResult("❌ Erreur lors de l'envoi");
       }
     } catch (validationError) {
-      // ❌ Gestion erreurs validation
       if (validationError.inner) {
         const newErrors = {};
         validationError.inner.forEach((err) => {
@@ -63,53 +45,25 @@ export default function Contact() {
         });
         setErrors(newErrors);
       }
-
       setResult("❌ Erreur de validation");
     }
   };
 
   return (
     <div className="bg-yellow-400 min-h-screen flex items-center justify-center p-6 bg-[#FFDC03]">
-      <form
-        onSubmit={onSubmit}
-        className="w-full max-w-2xl flex flex-col gap-6"
-      >
-        <h1 className="text-4xl font-bold text-center text-black">
-          Contactez-moi
-        </h1>
+      <form onSubmit={onSubmit} className="w-full max-w-2xl flex flex-col gap-6">
+        <h1 className="text-4xl font-bold text-center text-black">Contactez-moi</h1>
 
-        <input
-          type="text"
-          name="name"
-          placeholder="Votre nom"
-          className="bg-white p-4 rounded-xl"
-        />
+        <input type="text" name="name" placeholder="Votre nom" className="bg-white p-4 rounded-xl" />
         {errors.name && <p className="text-red-600">{errors.name}</p>}
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Votre email"
-          className="bg-white p-4 rounded-xl"
-        />
+        <input type="email" name="email" placeholder="Votre email" className="bg-white p-4 rounded-xl" />
         {errors.email && <p className="text-red-600">{errors.email}</p>}
 
-        <textarea
-          name="message"
-          rows="6"
-          placeholder="Votre message"
-          className="bg-white p-4 rounded-xl resize-none"
-        />
-        {errors.message && (
-          <p className="text-red-600">{errors.message}</p>
-        )}
+        <textarea name="message" rows="6" placeholder="Votre message" className="bg-white p-4 rounded-xl resize-none" />
+        {errors.message && <p className="text-red-600">{errors.message}</p>}
 
-        <button
-          type="submit"
-          className="bg-black text-white p-4 rounded-xl hover:bg-gray-800"
-        >
-          Envoyer
-        </button>
+        <button type="submit" className="bg-black text-white p-4 rounded-xl hover:bg-gray-800">Envoyer</button>
 
         <span className="text-center font-semibold">{result}</span>
       </form>
