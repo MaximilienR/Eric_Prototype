@@ -1,5 +1,3 @@
-import fetch from "node-fetch";
-
 export async function handler(event) {
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
@@ -26,6 +24,7 @@ export async function handler(event) {
     console.log("FormData reçu:", formData);
     console.log("Payload envoyé:", payload.toString());
 
+    // fetch natif Node 18 sur Netlify Functions
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       body: payload,
