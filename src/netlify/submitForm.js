@@ -7,8 +7,6 @@ export async function handler(event) {
 
   try {
     const formData = JSON.parse(event.body);
-
-    // 🔑 Clé Web3Forms côté serveur (jamais exposée au navigateur)
     const access_key = process.env.VITE_WEB3FORMS_KEY;
 
     const payload = new URLSearchParams({
