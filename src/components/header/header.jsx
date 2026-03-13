@@ -7,12 +7,11 @@ import logoDynamik from "../../assets/logoDynamik.mp4";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const links = [
-    { name: "Accueil", href: "#accueil" },
-    { name: "À propos", href: "#about" },
-    { name: "Contact", href: "#contact" },
-  ];
-
+const links = [
+  { name: "Accueil", href: "/#accueil" },
+  { name: "À propos", href: "/#about" },
+  { name: "Contact", href: "/#contact" },
+];
   const socials = [
     { icon: fb, alt: "Facebook", href: "https://www.facebook.com/eric.colin.motion.design" },
     { icon: lin, alt: "Linkedin", href: "https://www.linkedin.com/in/eric-colin-graphics/" },
