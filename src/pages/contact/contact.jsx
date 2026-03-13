@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-
+import { Link } from "react-router-dom";
 export default function Contact() {
   const initialValues = {
     name: "",
@@ -91,11 +91,13 @@ export default function Contact() {
                 className="bg-white p-4 rounded-xl resize-none"
               />
               <ErrorMessage name="message" component="p" className="text-red-600" />
-
-              <label className="flex items-center gap-2 text-black">
-                <Field type="checkbox" name="privacy" className="w-5 h-5" />
-                Je reconnais avoir pris connaissance de la politique de confidentialité et je l'accepte
-              </label>
+<label className="flex items-center gap-2 text-black">
+  <Field type="checkbox" name="privacy" className="w-5 h-5" />
+  Je reconnais avoir pris connaissance de la 
+  <Link to="/confidentiel" className="underline text-blue-600">
+    politique de confidentialité
+  </Link> et je l'accepte
+</label>
               <ErrorMessage name="privacy" component="p" className="text-red-600" />
 
               <button
